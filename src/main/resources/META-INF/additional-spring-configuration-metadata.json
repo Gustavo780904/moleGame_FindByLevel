@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "web",
+    "type": "java.lang.String",
+    "description": "A description for 'web'"
+  },
+  {
+    "name": "-Dspring.profiles.active",
+    "type": "java.lang.String",
+    "description": "A description for '-Dspring.profiles.active'"
+  },
+  {
+    "name": "-jar",
+    "type": "java.lang.String",
+    "description": "A description for '-jar'"
+  }
+]}
