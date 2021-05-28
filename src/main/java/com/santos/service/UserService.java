@@ -15,7 +15,10 @@ public class UserService {
 	public List<User> getAll() {
 		return repository.findAll();
 	}
-
+//	@Transactional(readOnly = true)
+//	public Page<User> findAllPaged(PageRequest pageRequest) {
+//		return repository.findAll(pageRequest);
+//	}
 	public User insert(User user) {
 		return repository.save(user);
 	}
