@@ -3,10 +3,6 @@ package com.santos.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,29 +41,35 @@ public class UserController {
 //	}
 	
 //	
-	@CrossOrigin
-	@GetMapping("/{level}")
-	public List<Ranking> findByLevel(@PathVariable String level) {
-		return rankingService.allByLevel(level);
-	}
 //	@CrossOrigin
 //	@GetMapping("/{level}")
-//	public List<Ranking> listTopFiveRanking(@PathVariable String level) {
-//		return rankingService.listTopFiveRanking(level);
+//	public List<Ranking> findByLevel(@PathVariable String level) {
+//		return rankingService.allByLevel(level);
+//	}
+//	@CrossOrigin
+//	@GetMapping("/list-Top-Five-Ranking")
+//	public List<Ranking> listTopFiveRanking(@RequestParam("level") String level) {
+//		return rankingService.findByLevel(level);
+//	}
 //
 //	}
-	@GetMapping(value = "/findy-by-level")
-	public ResponseEntity<Page<Ranking>> findyByLevel(
-			@RequestParam(value = "level", defaultValue = "") String level,
-			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
-			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
-			@RequestParam(value = "orderBy", defaultValue = "name") String orderBy) {
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-		Page<Ranking> list = rankingService.findyByLevel(level, pageRequest);
-		return ResponseEntity.ok().body(list);
+//	@GetMapping(value = "/findy-by-level")
+//	public ResponseEntity<Page<Ranking>> findyByLevel(
+//			@RequestParam(value = "level", defaultValue = "") String level,
+//			@RequestParam(value = "page", defaultValue = "0") Integer page,
+//			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
+//			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
+//			@RequestParam(value = "orderBy", defaultValue = "username") String orderBy) {
+//		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+//		Page<Ranking> list = rankingService.findyByLevel(level, pageRequest);
+//		return ResponseEntity.ok().body(list);
+//	}
+	@CrossOrigin
+	@GetMapping("/{find-by-level}")
+	public List<Ranking> findByLevel(@RequestParam(value = "level", defaultValue = "") String level) {
+		return rankingService.findByLevel(level);
 	}
-
+	
 	@CrossOrigin
 	@GetMapping("{/id}")
 	public User findById(@PathVariable Long id) {
