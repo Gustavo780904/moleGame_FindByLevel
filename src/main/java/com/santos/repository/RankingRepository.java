@@ -15,9 +15,6 @@ public interface RankingRepository extends JpaRepository<Ranking, Long>{
 //	@Query(value = "select distinct r.score, u.username from ranking r inner join user u on u.id = r.user_id where r.level = ?:level order by r.score desc, r.idlimit 5;", nativeQuery = true)
 //	List<Ranking> findyByLevelRanking(String level);
 	
-//	@Query(value = "call sp_ranking (\":level\");", nativeQuery = true)
-//	Page<Ranking> findyByLevel(String level, PageRequest pageRequest);
-//	@Query(value = "call sp_ranking (\"?level\");", nativeQuery = true)
-//	List<Ranking> findyByLevel(String level);
+
 	
 }
