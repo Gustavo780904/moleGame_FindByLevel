@@ -25,4 +25,8 @@ public class UserService {
 	public User getById(Long id) {
 		return repository.findById(id).orElseThrow(() -> new ListaNaoEncontradaException(id));
 	}
+	public User deleteAll() {
+		repository.deleteAll();
+		return (User) repository.findAll();
+	}
 }
