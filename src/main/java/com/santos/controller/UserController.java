@@ -1,6 +1,7 @@
 package com.santos.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -92,8 +93,7 @@ public class UserController {
 	}
 	@CrossOrigin
 	@DeleteMapping("/{id}")
-	public User delete(@PathVariable Long id) {
-		User users = userService.deleteAll();
-		return userService.deleteAll();
+	public Optional<? extends Object> delete(@PathVariable Long id) {
+		return userService.delete(id);
 	}
 }

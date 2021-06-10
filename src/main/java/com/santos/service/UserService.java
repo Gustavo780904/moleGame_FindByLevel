@@ -1,8 +1,11 @@
 package com.santos.service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.santos.domain.User;
@@ -25,8 +28,16 @@ public class UserService {
 	public User getById(Long id) {
 		return repository.findById(id).orElseThrow(() -> new ListaNaoEncontradaException(id));
 	}
-	public User deleteAll() {
-		repository.deleteAll();
-		return (User) repository.findAll();
+	public <U> Optional<? extends U> delete(Long id) {
+		return repository.findById(id).map((Function<? super User, ? extends U>) record -> {
+			repository.deleteById(id);
+			return null;
+		});
 	}
+//				.map(record -> {
+//		               repository.deleteById(id);
+//		               return ResponseEntity.ok().build();
+//		           }).orElse(ResponseEntity.notFound().build());
+//		}
+//	}
 }
