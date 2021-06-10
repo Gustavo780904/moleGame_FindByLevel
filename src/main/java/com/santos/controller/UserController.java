@@ -93,7 +93,7 @@ public class UserController {
 	}
 	@CrossOrigin
 	@DeleteMapping("/delete/{id}")
-	public Optional<? extends Object> delete(@PathVariable Long id, @RequestBody User user) {
+	public Optional<? extends Object> delete(@PathVariable Long id) {
 		return userService.delete(id);
 	}
 }
