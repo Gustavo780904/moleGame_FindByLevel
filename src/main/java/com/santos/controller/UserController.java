@@ -92,8 +92,8 @@ public class UserController {
 		return rankingService.newScore(score);
 	}
 	@CrossOrigin
-	@DeleteMapping("/{id}")
-	public Optional<? extends Object> delete(@PathVariable Long id) {
+	@DeleteMapping("/delete/{id}")
+	public Optional<? extends Object> delete(@PathVariable Long id, @RequestBody User user) {
 		return userService.delete(id);
 	}
 }
